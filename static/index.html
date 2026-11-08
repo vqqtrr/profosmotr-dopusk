@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Допуск к практике</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Допуск к практике</h1>
+      <p class="sub">Контроль медосмотров обучающихся · данные 1С и qMS на <b id="srez">…</b></p>
+    </div>
+    <span class="badge">Прототип · синтетические данные</span>
+  </header>
+
+  <main>
+    <!-- Шаг 3 UC-01: уровень -> курс -> группа -->
+    <section class="filters">
+      <label>Уровень обучения<select id="f-level"></select></label>
+      <label>Курс<select id="f-course"></select></label>
+      <label>Группа<select id="f-group"></select></label>
+    </section>
+
+    <section class="summary" id="summary" hidden>
+      <div class="card"><span id="s-total">0</span>обучающихся</div>
+      <div class="card ok"><span id="s-ok">0</span>допущено</div>
+      <div class="card bad"><span id="s-bad">0</span>не допущено</div>
+      <div class="legend">
+        <span><i class="c green"></i>норма</span>
+        <span><i class="c yellow"></i>скоро закончится</span>
+        <span><i class="c red"></i>проблема</span>
+        <span><i class="c grey"></i>нет данных / ждём</span>
+        <span class="hint">Нажмите на ячейку, чтобы увидеть запись qMS</span>
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <table id="grid"></table>
+    </section>
+
+    <section id="unmatched" class="unmatched" hidden>
+      <h2>Не найдены в qMS</h2>
+      <p>Этих обучающихся не удалось связать с пациентом клиники. Передайте список администратору.</p>
+      <ul id="unmatched-list"></ul>
+    </section>
+  </main>
+
+  <dialog id="cell-dialog">
+    <form method="dialog">
+      <h3 id="d-title"></h3>
+      <dl id="d-body"></dl>
+      <button>Закрыть</button>
+    </form>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
